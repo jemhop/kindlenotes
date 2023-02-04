@@ -1,11 +1,21 @@
 package main
 
+import (
+	"bufio"
+	"kindlenotes/kindle"
+	"os"
+)
+
 func main() {
 
-	content := openClippingsFile(getMountedKindle())
-	getSections(content)
-	//clippings := openFile(getMountedKindle())
-	//book := readClippingsFile(clippings)
+	file := kindle.GetClippingsFileContent()
 
-	//println(len(book))
+	sections := kindle.ReadClippingsFileAsSectionArray(file)
+	scanner := bufio.NewScanner(os.Stdin)
+
+	for _, s := range sections {
+		PrintClippingAsJson(s)
+		scanner.Scan()
+	}
+
 }

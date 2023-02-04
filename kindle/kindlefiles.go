@@ -1,4 +1,4 @@
-package main
+package kindle
 
 import (
 	"bytes"
@@ -8,6 +8,10 @@ import (
 	"golang.org/x/text/transform"
 )
 
+func GetClippingsFileContent() string {
+	return readClippingsFile(getMountedKindle())
+}
+
 //file to detect mounted kindle and find the relevant file
 
 // placeholder func for now
@@ -15,7 +19,7 @@ func getMountedKindle() string {
 	return "/home/emma/Projects/kindlenotes/My Clippings.txt"
 }
 
-func openClippingsFile(path string) string {
+func readClippingsFile(path string) string {
 	file, _ := readFileUTF16(path)
 	return string(file)
 
