@@ -52,7 +52,7 @@ const EntrySeperator = "\r\n=========="
 const KindleStrfTime = "%A, %d %B %Y %H:%M:%S"
 
 const (
-	CLIPPING = iota
+	HIGHLIGHT = iota
 	NOTE
 	BOOKMARK
 )
@@ -77,10 +77,10 @@ type Section struct {
 }
 
 // as of current only supports one author
-type book struct {
-	authors    string
-	name       string
-	highlights []Section
+type Book struct {
+	Author     string
+	Title      string
+	Highlights []Section
 }
 
 func init() {
@@ -145,7 +145,7 @@ func readSection(contentLines []string) (output Section) {
 
 func parseClippingType(infoLine string) (sectionType int) {
 	if strings.Contains(infoLine, "Highlight") {
-		sectionType = CLIPPING
+		sectionType = HIGHLIGHT
 	} else if strings.Contains(infoLine, "Note") {
 		sectionType = NOTE
 	} else if strings.Contains(infoLine, "Bookmark") {

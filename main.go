@@ -1,9 +1,7 @@
 package main
 
 import (
-	"bufio"
 	"kindlenotes/kindle"
-	"os"
 )
 
 func main() {
@@ -11,11 +9,11 @@ func main() {
 	file := kindle.GetClippingsFileContent()
 
 	sections := kindle.ReadClippingsFileAsSectionArray(file)
-	scanner := bufio.NewScanner(os.Stdin)
 
-	for _, s := range sections {
-		PrintClippingAsJson(s)
-		scanner.Scan()
+	books := kindle.SortSections(sections)
+
+	for _, b := range books {
+		PrintBookAsJson(b)
 	}
 
 }
