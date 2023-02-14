@@ -1,19 +1,20 @@
 package main
 
 import (
-	"kindlenotes/kindle"
+	"kindlenotes/display"
 )
 
 func main() {
+	display.InitTUI()
+	/*
+		file := kindle.GetClippingsFileContent()
 
-	file := kindle.GetClippingsFileContent()
+		sections := kindle.ReadClippingsFileAsSectionArray(file)
 
-	sections := kindle.ReadClippingsFileAsSectionArray(file)
+		books := kindle.SortSections(sections)
 
-	books := kindle.SortSections(sections)
-
-	for _, b := range books {
-		PrintBookAsJson(b)
-	}
-
+		for _, b := range books {
+			PrintBookAsJson(b)
+		}
+	*/
 }
